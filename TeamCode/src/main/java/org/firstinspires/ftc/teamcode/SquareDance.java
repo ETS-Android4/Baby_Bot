@@ -6,11 +6,18 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 @Autonomous(name = "Square", group = "team")
 
 public class SquareDance extends LinearOpMode {
 //Define motors
     Servo Flick;
+    static DcMotor TopLeft;
+    static DcMotor TopRight;
+    static DcMotor BackRight;
+    static DcMotor BackLeft;
 
     double Flick_Power;
     public final static double ARM_FLICKED = 0.8;
@@ -30,6 +37,17 @@ public class SquareDance extends LinearOpMode {
         Flick.setDirection(Servo.Direction.FORWARD);
         Flick_Power = 0.2;
         Flick.setPosition(ARM_HOME);
+        TopRight = hardwareMap.dcMotor.get("Top_Right");
+        TopRight.setDirection(FORWARD);
+
+        TopLeft = hardwareMap.dcMotor.get("Top_Left");
+        TopLeft.setDirection(FORWARD);
+
+        BackRight = hardwareMap.dcMotor.get("Bottom_Right");
+        BackRight.setDirection(FORWARD);
+
+        BackLeft = hardwareMap.dcMotor.get("Bottom_Left");
+        BackLeft.setDirection(FORWARD);
 
 
         waitForStart();

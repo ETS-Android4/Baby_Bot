@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import static com.qualcomm.robotcore.hardware.DcMotorSimple.Direction.FORWARD;
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -16,11 +17,17 @@ public class Omni_DriveTrain {
 
 
     public static void OmniDrive(String Dir, double Spd, int Dist) {
-        TopLeft = hardwareMap.dcMotor.get("TL");
-        TopRight = hardwareMap.dcMotor.get("TR");
-        BackRight = hardwareMap.dcMotor.get("BR");
-        BackLeft = hardwareMap.dcMotor.get("BL");
+        TopRight = hardwareMap.dcMotor.get("Top_Right");
+        TopRight.setDirection(FORWARD);
 
+        TopLeft = hardwareMap.dcMotor.get("Top_Left");
+        TopLeft.setDirection(FORWARD);
+
+        BackRight = hardwareMap.dcMotor.get("Bottom_Right");
+        BackRight.setDirection(FORWARD);
+
+        BackLeft = hardwareMap.dcMotor.get("Bottom_Left");
+        BackLeft.setDirection(FORWARD);
         telemetry.addData("Direction",Dir);
         telemetry.update();
 
